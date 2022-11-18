@@ -1,5 +1,6 @@
 // Dependencies 
 
+const { ADDRGETNETWORKPARAMS } = require("dns");
 const fs = require("fs");
 const inquirer = require("inquirer");
 
@@ -42,13 +43,17 @@ inquirer.prompt([
 ])
 
   .then((answers) => {
-    const newManager = new Manager(answers.managerName, answers.managerEmail, answers.office);
-    console.log(newManager);
+    const newManager = (answers.managerName, answers.managerEmail, answers.office);
+    console.log(answers);
+    // teamArray.push(newManager);
+    // console.log(teamArray);
+   newEngineer();
   });
 
 
 
-//Engineer questions
+//Engineer questions  
+ const newEngineer = () => {
 
 inquirer.prompt([
   {
@@ -77,15 +82,18 @@ inquirer.prompt([
   }
 
 ])
-
+ 
   .then((answers) => {
-    const newEngineer = new Engineer(answers.Engineername, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
-    console.log(newEngineer);
+    const newEngineer = (answers.Engineername, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
+    console.log(answers);
+    newIntern();
+    
   });
 
+ };
 
-
-//Intern questions
+// //Intern questions
+const newIntern = () => {
 
 inquirer.prompt ([
   {
@@ -116,11 +124,14 @@ inquirer.prompt ([
 ])
 
 .then((answers) => {
-  const newIntern = new Intern(answers.intersName, answers.internId, answers.internEmail, answers.internSchool);
-  console.log(newIntern);
+  const newIntern = (answers.intersName, answers.internId, answers.internEmail, answers.internSchool);
+  console.log(answers);
 });
+};
 
 };
+
+
 
 //function to initialize program
 function init() {
