@@ -1,6 +1,6 @@
 // Dependencies 
 
-const { ADDRGETNETWORKPARAMS } = require("dns");
+// const { ADDRGETNETWORKPARAMS } = require("dns");
 const fs = require("fs");
 const inquirer = require("inquirer");
 
@@ -13,8 +13,9 @@ const inquirer = require("inquirer");
 const teamArray = [];
 
 //generate team page variable
-const generatePage = require('.src/')
-const htmlPage = path.join(directory, 'index.html');
+
+// const generatePage = require('./src/teamplate')
+// const htmlPage = path.join(directory, './dist/index.html');
 
 //function to start team questions
 const startteam = () => {
@@ -138,7 +139,7 @@ const startteam = () => {
 //function to generate html 
 const page = () => {
 
-    fs.writeFileSync(htmlPage, generatePage(teamArray), 'utf-8');
+    // fs.writeFileSync(htmlPage, generatePage(teamArray), 'utf-8');
     console.log('Page generated!');
 }
 
