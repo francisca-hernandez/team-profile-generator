@@ -9,137 +9,138 @@ const inquirer = require("inquirer");
 // const Engineer = require("./lib/Engineer");
 // const Intern = require("./lib/Intern");
 
-//const generatePage= require('.src/')
-
-
 //empty array to store team memebers in
 const teamArray = [];
 
+//generate team page variable
+const generatePage = require('.src/')
+const htmlPage = path.join(directory, 'index.html');
+
+//function to start team questions
 const startteam = () => {
 
-//Questions for User input 
+  //Questions for User input 
 
-//Manager questions
+  //Manager questions
+  inquirer.prompt([
+    {
+      type: 'input',
+      name: 'managerName',
+      message: "Please enter Managers name"
 
-inquirer.prompt([
-  {
-    type: 'input',
-    name: 'managerName',
-    message: "Please enter Managers name"
+    },
 
-  },
+    {
+      type: 'input',
+      name: 'managerEmail',
+      message: 'What is this managers Email adress?'
+    },
 
-  {
-    type: 'input',
-    name: 'managerEmail',
-    message: 'What is this managers Email adress?'
-  },
+    {
+      type: 'input',
+      name: 'office',
+      message: 'What is this managers office number?'
+    },
+  ])
 
-  {
-    type: 'input',
-    name: 'office',
-    message: 'What is this managers office number?'
-  },
-])
-
-  .then((answers) => {
-    const newManager = (answers.managerName, answers.managerEmail, answers.office);
-    console.log(answers);
-    // teamArray.push(newManager);
-    // console.log(teamArray);
-   newEngineer();
-  });
-
+    .then((answers) => {
+      const newManager = (answers.managerName, answers.managerEmail, answers.office);
+      console.log(answers);
+      // teamArray.push(newManager);
+      // console.log(teamArray);
+      newEngineer();
+    });
 
 
-//Engineer questions  
- const newEngineer = () => {
 
-inquirer.prompt([
-  {
-    type: 'input',
-    name: 'engineerName',
-    message: "name of Engineer"
+  //Engineer questions  
+  const newEngineer = () => {
 
-  },
+    inquirer.prompt([
+      {
+        type: 'input',
+        name: 'engineerName',
+        message: "name of Engineer"
 
-  {
-    type: 'input',
-    name: 'engineerId',
-    message: 'Employee ID'
-  },
+      },
 
-  {
-    type: 'input',
-    name: 'engineerEmail',
-    message: 'what is the employees email address?'
-  },
+      {
+        type: 'input',
+        name: 'engineerId',
+        message: 'Employee ID'
+      },
 
-  {
-    type: "input",
-    name: "engineergGithub",
-    message: "what is the Engineers github address",
-  }
+      {
+        type: 'input',
+        name: 'engineerEmail',
+        message: 'what is the employees email address?'
+      },
 
-])
- 
-  .then((answers) => {
-    const newEngineer = (answers.Engineername, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
-    console.log(answers);
-    newIntern();
-    
-  });
+      {
+        type: "input",
+        name: "engineergGithub",
+        message: "what is the Engineers github address",
+      }
 
- };
+    ])
 
-// //Intern questions
-const newIntern = () => {
+      .then((answers) => {
+        const newEngineer = (answers.Engineername, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
+        console.log(answers);
+        newIntern();
 
-inquirer.prompt ([
-  {
-  type: 'input',
-  name:'internName',
-  message: "Name of Intern"
+      });
 
-},
+  };
 
-{
-  type: 'input',
-  name: 'internId',
-  message: 'Intern ID'
-},
+  // //Intern questions
+  const newIntern = () => {
 
-{
-  type: 'input',
-  name: 'internEmail',
-  message: 'what is the Interns email address?'
-},
+    inquirer.prompt([
+      {
+        type: 'input',
+        name: 'internName',
+        message: "Name of Intern"
 
-{
-  type: "input",
-  name: "internSchool",
-  message: "what school does the the Intern attend?",
+      },
+
+      {
+        type: 'input',
+        name: 'internId',
+        message: 'Intern ID'
+      },
+
+      {
+        type: 'input',
+        name: 'internEmail',
+        message: 'what is the Interns email address?'
+      },
+
+      {
+        type: "input",
+        name: "internSchool",
+        message: "what school does the the Intern attend?",
+      }
+
+    ])
+
+      .then((answers) => {
+        const newIntern = (answers.intersName, answers.internId, answers.internEmail, answers.internSchool);
+        console.log(answers);
+        page();
+      });
+      
+  };
+
+};
+
+
+//function to generate html 
+const page = () => {
+
+    fs.writeFileSync(htmlPage, generatePage(teamArray), 'utf-8');
+    console.log('Page generated!');
 }
 
-])
-
-.then((answers) => {
-  const newIntern = (answers.intersName, answers.internId, answers.internEmail, answers.internSchool);
-  console.log(answers);
-});
-};
-
-};
-
-
-
-//function to initialize program
-function init() {
-  inquirer.prompt(answers)
-      .then(function (response) {
-
-          writeToFile(response);
-      })
-};
 
 startteam();
