@@ -1,6 +1,6 @@
 const generateCards = team => {
 
-const generatemgrCard = manager => { 
+const generatemgrCard = manager =>{
     return `
 
 <div class="card-group">
@@ -17,9 +17,8 @@ const generatemgrCard = manager => {
 `
 }
 
-// const = generateengCard = engineer => {
+//const = generateengCard = engineer => {
 
-
-// }
-
+  
 }
+

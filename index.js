@@ -139,7 +139,7 @@ const startteam = () => {
 //function to generate html 
 const page = () => {
 
-    // fs.writeFileSync(htmlPage, generatePage(teamArray), 'utf-8');
+    //fs.writeFileSync(htmlPage, generatePage(teamArray), 'utf-8');
     console.log('Page generated!');
 }
 
