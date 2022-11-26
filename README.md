@@ -21,5 +21,7 @@ SO THAT I have quick access to their emails and GitHub profiles
 *jest
 
 *Demo
+Coming Soon!
 
 *Github Link
+https://francisca-hernandez.github.io/team-profile-generator/
