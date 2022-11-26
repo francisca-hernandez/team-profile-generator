@@ -1,16 +1,16 @@
 // Dependencies 
 
-// const { ADDRGETNETWORKPARAMS } = require("dns");
-const fs = require("fs");
 const inquirer = require("inquirer");
 
-// const Employee = require("./lib/Employee");
-// const Manager = require("./lib/Manager");
-// const Engineer = require("./lib/Engineer");
-// const Intern = require("./lib/Intern");
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+// const Employee = require('./lib/Employee');
 
 //empty array to store team memebers in
 const teamArray = [];
+
+const fs = require("fs");
 
 //generate team page variable
 
