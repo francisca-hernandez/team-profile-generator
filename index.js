@@ -5,20 +5,26 @@ const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-// const Employee = require('./lib/Employee');
+const Employee = require('./lib/Employee');
 
 //empty array to store team memebers in
 const teamArray = [];
 
-const fs = require("fs");
+const fs = require('fs');
+const path = require('path');
+
+const directory = path.resolve(__dirname, 'dist');
+const finalHTML = path.join(directory, 'index.html');
 
 //generate team page variable
+const generatePage = require('./src/template');
 
-// const generatePage = require('./src/teamplate')
-// const htmlPage = path.join(directory, './dist/index.html');
+
 
 //function to start team questions
 const startteam = () => {
+
+  console.log(` Answer the following questions to build your team template`);
 
   //Questions for User input 
 
@@ -45,12 +51,42 @@ const startteam = () => {
   ])
 
     .then((answers) => {
-      const newManager = (answers.managerName, answers.managerEmail, answers.office);
-      console.log(answers);
-      // teamArray.push(newManager);
-      // console.log(teamArray);
-      newEngineer();
+      const newManager = new Manager(answers.managerName, answers.managerEmail, answers.office);
+
+      console.log(newManager);
+      teamArray.push(newManager);
+      console.log(teamArray);
+      addTeamMem();
     });
+  };
+
+//option to add what team members
+  const addTeamMem = () => {
+    inquirer
+      .prompt([
+        {
+          type: 'list',
+          name: 'teamMember',
+          message: 'Which team member would you like to add?',
+          choices: ['Engineer', 'Intern', 'Done']
+        }
+      ])
+      .then((choice) => {
+        switch (choice.teamMember) {
+          case 'Engineer':
+            newEngineer();
+            break;
+          case 'Intern':
+            newIntern();
+            break;
+          case 'Done':
+            console.log('Done!')
+
+            createPage();
+        }
+      })
+      
+  }
 
 
 
@@ -79,15 +115,17 @@ const startteam = () => {
 
       {
         type: "input",
-        name: "engineergGithub",
+        name: "engineerGithub",
         message: "what is the Engineers github address",
       }
 
     ])
 
       .then((answers) => {
-        const newEngineer = (answers.Engineername, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
-        console.log(answers);
+        const newEngineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
+        console.log(newEngineer);
+        teamArray.push(newEngineer);
+        console.log(teamArray);
         newIntern();
 
       });
@@ -113,7 +151,7 @@ const startteam = () => {
 
       {
         type: 'input',
-        name: 'internEmail',
+        name: 'internsEmail',
         message: 'what is the Interns email address?'
       },
 
@@ -126,22 +164,30 @@ const startteam = () => {
     ])
 
       .then((answers) => {
-        const newIntern = (answers.intersName, answers.internId, answers.internEmail, answers.internSchool);
-        console.log(answers);
-        page();
+        const newIntern = new Intern(answers.internName, answers.internId, answers.internsEmail, answers.internSchool);
+        console.log(newIntern);
+        teamArray.push(newIntern);
+        console.log(teamArray);
+
+
+
+        console.log(`
+    
+                  Congratulations! You now have a new team!
+       
+        `)
+
+        addTeamMem();
       });
-      
+
   };
 
-};
+
 
 
 //function to generate html 
-const page = () => {
-
-    //fs.writeFileSync(htmlPage, generatePage(teamArray), 'utf-8');
-    console.log('Page generated!');
+const createPage = () => {
+  fs.writeFileSync(finalHTML, (teamArray), 'utf-8');
+  console.log('Page created');
 }
-
-
 startteam();
