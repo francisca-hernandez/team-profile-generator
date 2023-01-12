@@ -39,6 +39,12 @@ const startteam = () => {
 
     {
       type: 'input',
+      name: 'managerId',
+      message: 'Employee ID'
+    },
+
+    {
+      type: 'input',
       name: 'managerEmail',
       message: 'What is this managers Email adress?'
     },
@@ -51,7 +57,7 @@ const startteam = () => {
   ])
 
     .then((answers) => {
-      const newManager = new Manager(answers.managerName, answers.managerEmail, answers.office);
+      const newManager = new Manager(answers.managerName, answers.managerID, answers.managerEmail, answers.office);
 
       console.log(newManager);
       teamArray.push(newManager);
@@ -187,7 +193,15 @@ const startteam = () => {
 
 //function to generate html 
 const createPage = () => {
-  fs.writeFileSync(finalHTML, (teamArray), 'utf-8');
+// fs.writeFileSync(finalHTML + generatePage, JSON.stringify(teamArray));
+
+// fs.writeFileSync(finalHTML + generatePage, JSON.stringify(teamArray));
+
+
+
+  fs.writeFileSync(finalHTML, generatePage,(teamArray), 'utf-8');
   console.log('Page created');
+
 }
+
 startteam();

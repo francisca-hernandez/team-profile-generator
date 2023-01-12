@@ -20,6 +20,7 @@
 // };
 
 
+
 const generateCards = team => {
     const managerCard = manager => {
         return `
