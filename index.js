@@ -183,7 +183,7 @@ const startteam = () => {
        
         `)
 
-        addTeamMem();
+        createPage();
       });
 
   };
@@ -196,5 +196,7 @@ const createPage = () => {
   fs.writeFileSync(teamHTML, generatePage(teamArray), 'utf-8');
   console.log('Page generated!');
 }
+
+
 
 startteam();

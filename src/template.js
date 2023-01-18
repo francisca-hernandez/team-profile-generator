@@ -1,24 +1,81 @@
 
-// const generateCards = team => {
-//     //manager card
-//     const managerCard = manager => {
-//         return `
-//         <div class="card mx-2 my-1">
-//             <div class="card-header">
-//                 <h2 class="card-title">${manager.getName()}</h2>
-//                 <h3 class="card-title">${manager.getRole()}</h3>
-//             </div>
-//             <div class="card-body">
-//                 <ul class ="list-group">
-//                     <li class="list-group-item">ID: ${manager.getId()} </li>
-//                     <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a> </li>
-//                     <li class="list-group-item">Office Number: ${manager.getOfficeNumber()} </li>
-//                 </ul>
-//             </div>
-//         </div>
-//         `
-//     }
+// // Engineer card template
+// const engineer = engineerData => {
+//   return `
+//   <div id="${engineerData.getRole()}-card" class="box card">
+//     <div class="box name-role engineer-name">
+//       <h2>${engineerData.getName()}</h2>
+//       <h3>Role: ${engineerData.getRole()}</h3>
+//     </div> 
+//     <div class="box employee-info">
+//       <ul class="list-group">
+//         <li class="list-group-item">ID: ${engineerData.getId()}</li>
+//         <li class="list-group-item">Email: <a href="mailto:${engineerData.getEmail()}">${engineerData.getEmail()}</a></li>
+        
+//         <li class="list-group-item">Github:
+//         <a href="https://www.github.com/${engineerData.getGithub()}" target="_blank">www.github.com/${engineerData.getGithub()}</a>
+//         </li>
+//       </ul>
+//     </div>
+//   </div>
+// `
+// }
+// // Intern card template
+// const intern = internData => {
+//   return `
+//   <div id="${internData.getRole()}-card" class="box card">
+//     <div class="box name-role intern-name">
+//       <h2>${internData.getName()}</h2>
+//       <h3>Role: ${internData.getRole()}</h3>
+//     </div> 
+//     <div class="box employee-info">
+//       <ul class="list-group">
+//         <li class="list-group-item">ID: ${internData.getId()}</li>
+//         <li class="list-group-item">Email: <a href="mailto:${internData.getEmail()}">${internData.getEmail()}</a></li>
+//         <li class="list-group-item">School: ${internData.getSchool()}</li>
+//       </ul>
+//     </div>
+//   </div>
+// `
+// }
+// // iterates through answers array, creates cards for each team member, then combines all cards together
+// const employeesDiv = employeesArr => {
+//   let employeeHtml = ''
 
-    // module.exports = team => {
-    //     return `
-    
+//   for ( i = 0; i < employeesArr.length; i++ ) {
+//     if (employeesArr[i].getRole() === "Manager"){
+//       employeeHtml = employeeHtml + manager(employeesArr[i])
+//     }
+//     if (employeesArr[i].getRole() === "Engineer"){
+//       employeeHtml = employeeHtml + engineer(employeesArr[i])
+//     }
+//     if (employeesArr[i].getRole() === "Intern"){
+//       employeeHtml = employeeHtml + intern(employeesArr[i])
+//     }
+//   } return employeeHtml
+// }
+// // html page template
+// const template = data => {
+//   return `
+//   <!DOCTYPE html>
+//   <html>
+//     <head>
+//       <title>Team Profile</title>
+//       <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+//       <link rel="stylesheet" href="./style.css"><source src="../page-template.js" type="page-template">
+//     </head>
+//     <body>
+//       <header class = "container">
+//         <div class = "flex box justify-center my-team">
+//           <h1> My Team </h1>
+//         </div>
+//       </header>
+//       <main class = "container">
+//       ${employeesDiv(data)}
+//       </main>
+//     </body>
+//   </html>
+// `
+// }
+
+// module.exports = template;
