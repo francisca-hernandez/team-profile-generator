@@ -1,0 +1,33 @@
+h1 {
+
+font-weight: 500;
+
+}
+
+
+body{
+    background-color: rgb(203, 224, 203);
+}
+
+header.container{
+    background-color: rgb(134, 202, 154);
+}
+
+h1 {
+    text-align: center;
+}
+
+
+.card {
+    flex-wrap: wrap;
+    margin: 20px;
+    color: rgb(22, 21, 21);
+    padding: 0;
+    height: 200px;
+    width: 500px;
+    border: rgb(48, 47, 47) 3px solid;
+
+}
+
+
+

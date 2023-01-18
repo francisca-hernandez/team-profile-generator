@@ -1,5 +1,5 @@
 
-// Manager card template
+// Manager card 
 const Manager = managerData => {
     return `
     <div id="${managerData.getRole()}-card" class="box card">
@@ -18,7 +18,7 @@ const Manager = managerData => {
   `
   }
 
-// Engineer card template
+// Engineer card 
 const Engineer = engineerData => {
   return `
   <div id="${engineerData.getRole()}-card" class="box card">
@@ -39,7 +39,7 @@ const Engineer = engineerData => {
   </div>
 `
 }
-// Intern card template
+// Intern card 
 const Intern = internData => {
   return `
   <div id="${internData.getRole()}-card" class="box card">
@@ -57,8 +57,8 @@ const Intern = internData => {
   </div>
 `
 }
-// iterates through answers array, creates cards for each team member, then combines all cards together
-const employeesDiv = employeesArr => {
+// creates cards for each team member
+const employeesCrd = employeesArr => {
   let employeeHtml = ''
 
   for ( i = 0; i < employeesArr.length; i++ ) {
@@ -80,8 +80,8 @@ const template = data => {
   <html>
     <head>
       <title>Team Profile</title>
-      <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-      <link rel="stylesheet" href="./style.css"><source src="../page-template.js" type="page-template">
+      <link rel="stylesheet" href="./style.css">
+      <source src="../src/template.js" type="template">
     </head>
     <body>
       <header class = "container">
@@ -90,7 +90,7 @@ const template = data => {
         </div>
       </header>
       <main class = "container">
-      ${employeesDiv(data)}
+      ${employeesCrd(data)}
       </main>
     </body>
   </html>
