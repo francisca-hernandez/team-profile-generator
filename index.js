@@ -5,7 +5,7 @@ const inquirer = require("inquirer");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const Employee = require('./lib/Employee');
+// const Employee = require("./lib/Employee");
 
 //empty array to store team memebers in
 const teamArray = [];
@@ -14,7 +14,7 @@ const fs = require('fs');
 const path = require('path');
 
 const directory = path.resolve(__dirname, 'dist');
-const finalHTML = path.join(directory, 'index.html');
+const teamHTML = path.join(directory, 'index.html');
 
 //generate team page variable
 const generatePage = require('./src/template');
@@ -193,15 +193,8 @@ const startteam = () => {
 
 //function to generate html 
 const createPage = () => {
-// fs.writeFileSync(finalHTML + generatePage, JSON.stringify(teamArray));
-
-// fs.writeFileSync(finalHTML + generatePage, JSON.stringify(teamArray));
-
-
-
-  fs.writeFileSync(finalHTML, generatePage,(teamArray), 'utf-8');
-  console.log('Page created');
-
+  fs.writeFileSync(teamHTML, generatePage(teamArray), 'utf-8');
+  console.log('Page generated!');
 }
 
 startteam();
