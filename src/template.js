@@ -57,7 +57,7 @@ const Intern = internData => {
   </div>
 `
 }
-// creates cards for each team member
+// creates cards for each team member //AskBCS for help
 const employeesCrd = employeesArr => {
   let employeeHtml = ''
 
@@ -73,7 +73,7 @@ const employeesCrd = employeesArr => {
     }
   } return employeeHtml
 }
-// html page template
+// html page template that will be used for the team cards
 const template = data => {
   return `
   <!DOCTYPE html>
